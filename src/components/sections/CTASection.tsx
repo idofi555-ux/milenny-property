@@ -46,7 +46,7 @@ export default function CTASection() {
             className="lg:pl-12"
           >
             <div className="bg-white/5 backdrop-blur-sm border border-white/10 p-10">
-              <ContactForm variant="dark" compact />
+              <ContactForm variant="dark" />
             </div>
           </motion.div>
         </div>

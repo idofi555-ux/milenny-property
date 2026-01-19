@@ -104,27 +104,6 @@ const services = [
   },
 ];
 
-// Contact info data
-const contactInfo = [
-  {
-    icon: <Mail size={24} />,
-    title: "Email",
-    content: "info@milennyproperty.com",
-    href: "mailto:info@milennyproperty.com",
-  },
-  {
-    icon: <MapPin size={24} />,
-    title: "Address",
-    content: "Elpidas 8, Pyrgos 4534",
-    subContent: "Limassol, Cyprus",
-  },
-  {
-    icon: <Clock size={24} />,
-    title: "Working Hours",
-    content: "Mon–Fri, 09:00–18:00",
-  },
-];
-
 // Stats data
 const stats = [
   { num: "10+", label: "Years Experience" },
@@ -478,124 +457,73 @@ export default function Home() {
       </section>
 
       {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="scroll-mt-24">
-        {/* Contact Info Cards */}
-        <div className="py-16 md:py-20 bg-[#F8F7F4]">
-          <div className="container-custom">
-            {/* Section Header */}
+      <section id="contact" className="scroll-mt-24 bg-white">
+        <div className="container-custom py-20 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
+            {/* Left Column - Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-center mb-12"
             >
-              <span className="label-luxury block mb-4">Contact Us</span>
+              <span className="label-luxury block mb-4">Contact</span>
               <h2
-                className="text-3xl md:text-4xl mb-4"
+                className="text-3xl md:text-4xl mb-6"
                 style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                Get in touch
+                Let&apos;s discuss your project
               </h2>
-              <p className="text-[var(--color-text-muted)] text-base max-w-xl mx-auto">
-                Whether you&apos;re looking to invest, develop, or need expert property management, our team is ready to help.
+              <p className="text-[var(--color-text-muted)] mb-10 leading-relaxed">
+                Whether you&apos;re looking to invest, develop, or need expert property management, we&apos;re here to help.
               </p>
+
+              {/* Contact Details */}
+              <div className="space-y-6">
+                <div className="flex items-start gap-4">
+                  <div className="text-[var(--color-primary)] mt-1">
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Email</p>
+                    <a href="mailto:info@milennyproperty.com" className="text-[var(--color-text-dark)] hover:text-[var(--color-primary)] transition-colors">
+                      info@milennyproperty.com
+                    </a>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="text-[var(--color-primary)] mt-1">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Office</p>
+                    <p className="text-[var(--color-text-dark)]">Elpidas 8, Pyrgos 4534</p>
+                    <p className="text-[var(--color-text-dark)]">Limassol, Cyprus</p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4">
+                  <div className="text-[var(--color-primary)] mt-1">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Hours</p>
+                    <p className="text-[var(--color-text-dark)]">Mon – Fri, 09:00 – 18:00</p>
+                  </div>
+                </div>
+              </div>
             </motion.div>
 
-            {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={info.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-[#E8E4DC]"
-                >
-                  <div className="w-10 h-10 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-4">
-                    <div className="text-[var(--color-primary)]">
-                      {info.icon}
-                    </div>
-                  </div>
-                  <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-dark)] mb-2">{info.title}</h3>
-                  {info.href ? (
-                    <a
-                      href={info.href}
-                      className="text-[var(--color-text-muted)] text-[15px] hover:text-[var(--color-primary)] transition-colors"
-                    >
-                      {info.content}
-                    </a>
-                  ) : (
-                    <div className="text-[var(--color-text-muted)] text-[15px]">
-                      <span>{info.content}</span>
-                      {info.subContent && <span className="block">{info.subContent}</span>}
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
+            {/* Right Column - Form */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+            >
+              <ContactForm variant="light" />
+            </motion.div>
           </div>
-        </div>
-
-        {/* Form Section */}
-        <div className="relative py-16 md:py-20 overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
-              alt="Modern architecture"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-[var(--color-bg-dark)]/92" />
-          </div>
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="lg:col-span-2"
-                >
-                  <span className="label-luxury block mb-4">Send a Message</span>
-                  <h2
-                    className="text-2xl md:text-3xl text-white mb-4 leading-tight"
-                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                  >
-                    Tell us about your project
-                  </h2>
-                  <p className="text-white/50 text-[15px] leading-relaxed">
-                    Fill out the form and we&apos;ll get back to you within one business day.
-                  </p>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="lg:col-span-3"
-                >
-                  <ContactForm variant="dark" compact />
-                </motion.div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Map Section */}
-        <div className="h-[350px] relative bg-[var(--color-bg-dark)]">
-          <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-[var(--color-bg-dark)] to-transparent z-10" />
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.8!2d33.0442!3d34.6892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e7340a5e15e0e1%3A0x1!2sPyrgos%2C%20Limassol%2C%20Cyprus!5e0!3m2!1sen!2s!4v1705600000000!5m2!1sen!2s"
-            width="100%"
-            height="100%"
-            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
-            allowFullScreen
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            title="Milenny Property - Elpidas 8, Pyrgos 4534, Limassol, Cyprus"
-          />
         </div>
       </section>
     </>
