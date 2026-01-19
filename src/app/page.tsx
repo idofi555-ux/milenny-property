@@ -471,12 +471,12 @@ export default function Home() {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mb-16 lg:mb-20"
+              className="mb-16 lg:mb-20 text-center"
             >
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 text-white">
                 Get in touch
               </h2>
-              <p className="text-lg text-white/50 max-w-xl">
+              <p className="text-lg text-white/50 max-w-xl mx-auto">
                 We&apos;d love to hear from you. Whether you have a question about our services or want to discuss a project.
               </p>
             </motion.div>
