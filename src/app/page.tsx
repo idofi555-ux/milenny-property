@@ -428,7 +428,7 @@ export default function Home() {
         </div>
 
         {/* Stats Section */}
-        <div className="py-20 bg-[var(--color-bg-dark)]">
+        <div className="py-20 bg-[var(--color-bg-light)]">
           <div className="container-custom">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -441,12 +441,12 @@ export default function Home() {
                   className="text-center"
                 >
                   <span
-                    className="text-4xl md:text-5xl text-white block mb-2"
+                    className="text-4xl md:text-5xl text-[var(--color-text-dark)] block mb-2"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {stat.num}
                   </span>
-                  <span className="text-white/60 text-sm uppercase tracking-wider">
+                  <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">
                     {stat.label}
                   </span>
                 </motion.div>
