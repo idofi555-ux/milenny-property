@@ -406,36 +406,8 @@ export default function Home() {
         </div>
 
         <div className="container-custom relative z-10">
-          {/* Portfolio Content */}
-          <div className="max-w-2xl mx-auto text-center mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="text-xs uppercase tracking-[0.2em] text-white/40 block mb-6">Our Portfolio</span>
-              <h2
-                className="text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-              >
-                Our portfolio is being curated
-              </h2>
-              <p className="text-white/50 text-lg leading-relaxed mb-10">
-                We are preparing detailed case studies of our completed and ongoing projects.
-                Check back soon or contact us to learn more about our work.
-              </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center text-sm uppercase tracking-wider font-medium text-white hover:text-white/70 transition-colors"
-              >
-                Get in Touch
-                <ArrowUpRight className="ml-2" size={16} />
-              </a>
-            </motion.div>
-          </div>
-
           {/* Stats */}
-          <div className="border-t border-white/10 pt-16">
+          <div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <motion.div
