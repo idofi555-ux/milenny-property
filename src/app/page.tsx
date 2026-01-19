@@ -457,7 +457,7 @@ export default function Home() {
       </section>
 
       {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="scroll-mt-24 bg-white py-24 lg:py-32">
+      <section id="contact" className="scroll-mt-24 bg-[#0a0a0a] py-24 lg:py-32">
         <div className="container-custom">
           <div className="max-w-5xl mx-auto">
             {/* Header */}
@@ -467,10 +467,10 @@ export default function Home() {
               viewport={{ once: true }}
               className="mb-16 lg:mb-20"
             >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 text-white">
                 Get in touch
               </h2>
-              <p className="text-lg text-gray-500 max-w-xl">
+              <p className="text-lg text-white/50 max-w-xl">
                 We&apos;d love to hear from you. Whether you have a question about our services or want to discuss a project.
               </p>
             </motion.div>
@@ -485,22 +485,22 @@ export default function Home() {
                 className="space-y-10"
               >
                 <div>
-                  <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Email</h3>
-                  <a href="mailto:info@milennyproperty.com" className="text-xl hover:text-gray-500 transition-colors">
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">Email</h3>
+                  <a href="mailto:info@milennyproperty.com" className="text-xl text-white hover:text-white/70 transition-colors">
                     info@milennyproperty.com
                   </a>
                 </div>
 
                 <div>
-                  <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Office</h3>
-                  <p className="text-xl">Elpidas 8, Pyrgos 4534</p>
-                  <p className="text-xl">Limassol, Cyprus</p>
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">Office</h3>
+                  <p className="text-xl text-white">Elpidas 8, Pyrgos 4534</p>
+                  <p className="text-xl text-white">Limassol, Cyprus</p>
                 </div>
 
                 <div>
-                  <h3 className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3">Hours</h3>
-                  <p className="text-xl">Monday – Friday</p>
-                  <p className="text-xl">09:00 – 18:00</p>
+                  <h3 className="text-xs uppercase tracking-[0.2em] text-white/40 mb-3">Hours</h3>
+                  <p className="text-xl text-white">Monday – Friday</p>
+                  <p className="text-xl text-white">09:00 – 18:00</p>
                 </div>
               </motion.div>
 
@@ -511,7 +511,7 @@ export default function Home() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <ContactForm variant="light" />
+                <ContactForm variant="dark" />
               </motion.div>
             </div>
           </div>

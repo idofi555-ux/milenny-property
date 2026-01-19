@@ -41,7 +41,7 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
       <div>
-        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+        <label className={`text-xs uppercase tracking-[0.2em] mb-3 block ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
           Name
         </label>
         <input
@@ -58,7 +58,7 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+        <label className={`text-xs uppercase tracking-[0.2em] mb-3 block ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
           Email
         </label>
         <input
@@ -81,7 +81,7 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+        <label className={`text-xs uppercase tracking-[0.2em] mb-3 block ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
           Phone <span className="normal-case tracking-normal">(optional)</span>
         </label>
         <input
@@ -97,7 +97,7 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+        <label className={`text-xs uppercase tracking-[0.2em] mb-3 block ${isDark ? 'text-white/40' : 'text-gray-400'}`}>
           Message
         </label>
         <textarea
