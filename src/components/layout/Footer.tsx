@@ -41,7 +41,6 @@ export default function Footer() {
           <div>
             <h3 className="text-sm font-medium text-white mb-5">Contact</h3>
             <div className="space-y-3 text-sm text-white/50">
-              <p>Phone: +357 XX XXX XXX</p>
               <p>Email: info@milennyproperty.com</p>
               <p>Hours: Mon–Fri, 09:00–18:00</p>
             </div>
