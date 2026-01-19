@@ -1,23 +1,17 @@
 import Link from "next/link";
-import { ButtonHTMLAttributes, AnchorHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from "react";
 
 type ButtonVariant = "primary" | "outline" | "outline-light";
 
-interface BaseButtonProps {
+interface ButtonProps {
   variant?: ButtonVariant;
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
+  href?: string;
 }
 
-interface ButtonAsButton extends BaseButtonProps, ButtonHTMLAttributes<HTMLButtonElement> {
-  href?: never;
-}
-
-interface ButtonAsLink extends BaseButtonProps, Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
-  href: string;
-}
-
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+type ButtonAsButton = ButtonProps & Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps>;
+type ButtonAsLink = ButtonProps & { href: string } & Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps>;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary: "bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-hover)] disabled:opacity-50 disabled:cursor-not-allowed",
@@ -31,22 +25,20 @@ export default function Button({
   children,
   href,
   ...props
-}: ButtonProps) {
+}: ButtonAsButton | ButtonAsLink) {
   const baseStyles = "inline-flex items-center justify-center px-8 py-4 text-[13px] font-medium uppercase tracking-[0.1em] transition-all duration-300";
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
 
   if (href) {
-    const { ...linkProps } = props as Omit<ButtonAsLink, 'href' | 'variant' | 'className' | 'children'>;
     return (
-      <Link href={href} className={combinedStyles} {...linkProps}>
+      <Link href={href} className={combinedStyles} {...(props as Omit<AnchorHTMLAttributes<HTMLAnchorElement>, keyof ButtonProps>)}>
         {children}
       </Link>
     );
   }
 
-  const buttonProps = props as Omit<ButtonAsButton, 'variant' | 'className' | 'children'>;
   return (
-    <button className={combinedStyles} {...buttonProps}>
+    <button className={combinedStyles} {...(props as Omit<ButtonHTMLAttributes<HTMLButtonElement>, keyof ButtonProps>)}>
       {children}
     </button>
   );
