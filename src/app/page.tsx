@@ -448,7 +448,7 @@ export default function Home() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 text-white">
                 Get in touch
               </h2>
-              <p className="text-lg text-white/50 max-w-xl mx-auto">
+              <p className="text-lg text-white/50 max-w-xl mx-auto text-center">
                 We&apos;d love to hear from you. Whether you have a question about our services or want to discuss a project.
               </p>
             </motion.div>
