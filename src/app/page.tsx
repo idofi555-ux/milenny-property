@@ -1,13 +1,142 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Mail, MapPin, Clock } from "lucide-react";
+import ContactForm from "@/components/ui/ContactForm";
+import {
+  PropertyDevelopmentIcon,
+  ProjectManagementIcon,
+  ShortTermRentalIcon,
+  LongTermRentalIcon,
+  InvestmentAdvisoryIcon,
+  SalesMarketingIcon,
+} from "@/components/ui/ServiceIcons";
+
+// Values data
+const valuesNumbered = [
+  { num: "01", label: "Integrity" },
+  { num: "02", label: "Accountability" },
+  { num: "03", label: "Quality" },
+  { num: "04", label: "Transparency" },
+  { num: "05", label: "Discretion" },
+  { num: "06", label: "Professionalism" },
+];
+
+// Services data
+const services = [
+  {
+    id: "property-development",
+    icon: <PropertyDevelopmentIcon className="w-12 h-12" />,
+    title: "Property Development",
+    description: "We manage the full development cycle from plot to final delivery, ensuring every detail meets our exacting standards.",
+    features: [
+      "Land evaluation & feasibility studies",
+      "Architectural coordination",
+      "Construction management",
+      "Budget & timeline control",
+      "Turnkey delivery",
+    ],
+  },
+  {
+    id: "project-management",
+    icon: <ProjectManagementIcon className="w-12 h-12" />,
+    title: "Project Management",
+    description: "Full oversight of construction or renovation projects with meticulous attention to quality and deadlines.",
+    features: [
+      "Contractor supervision",
+      "Quality inspections",
+      "Timeline tracking",
+      "Regulatory compliance",
+      "Transparent reporting",
+    ],
+  },
+  {
+    id: "short-term-rentals",
+    icon: <ShortTermRentalIcon className="w-12 h-12" />,
+    title: "Short-Term Rentals",
+    description: "Maximising your property's short-term rental performance through strategic management.",
+    features: [
+      "Listing setup & optimisation",
+      "Dynamic pricing strategy",
+      "Guest communication",
+      "Cleaning & maintenance",
+      "Monthly performance reports",
+    ],
+  },
+  {
+    id: "long-term-rentals",
+    icon: <LongTermRentalIcon className="w-12 h-12" />,
+    title: "Long-Term Rentals",
+    description: "Stable income with zero operational effort through comprehensive property management.",
+    features: [
+      "Tenant screening & selection",
+      "Lease management",
+      "Rent collection",
+      "Maintenance coordination",
+      "Regular inspections",
+    ],
+  },
+  {
+    id: "investment-advisory",
+    icon: <InvestmentAdvisoryIcon className="w-12 h-12" />,
+    title: "Investment Advisory",
+    description: "Expert guidance for profitable real estate decisions backed by deep market knowledge.",
+    features: [
+      "Market research & analysis",
+      "ROI projections",
+      "Property sourcing",
+      "Due diligence support",
+      "Portfolio strategy",
+    ],
+  },
+  {
+    id: "sales-marketing",
+    icon: <SalesMarketingIcon className="w-12 h-12" />,
+    title: "Sales & Marketing",
+    description: "Professional positioning and marketing for successful property sales.",
+    features: [
+      "Marketing strategy development",
+      "Property staging guidance",
+      "Buyer sourcing",
+      "Negotiation support",
+      "Transaction management",
+    ],
+  },
+];
+
+// Contact info data
+const contactInfo = [
+  {
+    icon: <Mail size={24} />,
+    title: "Email",
+    content: "info@milennyproperty.com",
+    href: "mailto:info@milennyproperty.com",
+  },
+  {
+    icon: <MapPin size={24} />,
+    title: "Address",
+    content: "Elpidas 8, Pyrgos 4534",
+    subContent: "Limassol, Cyprus",
+  },
+  {
+    icon: <Clock size={24} />,
+    title: "Working Hours",
+    content: "Mon–Fri, 09:00–18:00",
+  },
+];
+
+// Stats data
+const stats = [
+  { num: "10+", label: "Years Experience" },
+  { num: "50+", label: "Projects Completed" },
+  { num: "100%", label: "Client Satisfaction" },
+  { num: "€20M+", label: "Property Value Managed" },
+];
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section - Full Screen */}
+      {/* ==================== HERO SECTION ==================== */}
       <section className="relative min-h-screen flex items-center">
         {/* Background Image */}
         <div className="absolute inset-0">
@@ -36,13 +165,13 @@ export default function Home() {
               <p className="text-lg md:text-xl text-white/70 mb-12 max-w-lg leading-relaxed">
                 End-to-end real estate development, renovation, rentals, and investment advisory.
               </p>
-              <Link
-                href="/services"
+              <a
+                href="#services"
                 className="inline-flex items-center text-white/80 hover:text-white transition-colors text-sm uppercase tracking-wider"
               >
                 Explore Services
                 <ArrowRight className="ml-3" size={16} />
-              </Link>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -64,53 +193,411 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* Who We Are Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <div className="max-w-3xl">
+      {/* ==================== ABOUT SECTION ==================== */}
+      <section id="about" className="scroll-mt-24">
+        {/* About Intro */}
+        <div className="section-padding bg-white">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">About Us</span>
+                <p className="text-2xl md:text-3xl leading-relaxed text-[var(--color-text-dark)]" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+                  Milenny Property is a Cyprus-based boutique real estate company specialising in property development, renovation, rental management, and investment advisory.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-8">
+                  We develop, renovate, manage, and elevate real estate assets with a focus on quality, transparency, and long-term value. Our approach combines local expertise with European-standard professionalism.
+                </p>
+                <div className="divider mb-8" />
+                <a
+                  href="#services"
+                  className="inline-flex items-center text-sm uppercase tracking-wider font-medium hover:text-[var(--color-primary)] transition-colors"
+                >
+                  Explore Our Services
+                  <ArrowUpRight className="ml-2" size={16} />
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Values Section */}
+        <div className="section-padding bg-[var(--color-bg-light)]">
+          <div className="container-custom">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              className="text-center mb-20"
             >
-              <span className="label-luxury block mb-6">About Us</span>
-              <h2 className="text-4xl md:text-5xl mb-8 leading-tight" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
-                A boutique firm<br />dedicated to excellence
+              <span className="label-luxury block mb-6">Our Values</span>
+              <h2 className="text-4xl md:text-5xl" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+                What we stand for
               </h2>
-              <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-8">
-                Milenny Property is a Cyprus-based boutique real estate company offering complete solutions for property owners and investors. We develop, renovate, manage, and elevate real estate assets with a focus on quality, transparency, and long-term value.
-              </p>
-              <div className="divider mb-8" />
-              <Link
-                href="/about"
-                className="inline-flex items-center text-sm uppercase tracking-wider font-medium hover:text-[var(--color-primary)] transition-colors"
-              >
-                Learn More About Us
-                <ArrowUpRight className="ml-2" size={16} />
-              </Link>
             </motion.div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {valuesNumbered.map((value, index) => (
+                <motion.div
+                  key={value.num}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center p-8 bg-white hover:shadow-lg transition-shadow duration-500"
+                >
+                  <span className="text-4xl font-light text-[var(--color-primary)] block mb-4">
+                    {value.num}
+                  </span>
+                  <span className="text-sm font-medium uppercase tracking-wider">
+                    {value.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Mission Section */}
+        <div className="relative py-32 overflow-hidden">
+          <div className="absolute inset-0 bg-[var(--color-bg-dark)]" />
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">Our Mission</span>
+                <h2
+                  className="text-4xl md:text-5xl text-white mb-8 leading-tight"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  What guides our work<br />and decisions every day
+                </h2>
+                <p className="text-white/60 text-lg leading-relaxed">
+                  To deliver high-quality, reliable, and stress-free property experiences through expertise, transparency, and hands-on management.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="grid grid-cols-2 gap-4"
+              >
+                <div className="aspect-[3/4] overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+                    alt="Modern villa"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="aspect-[3/4] overflow-hidden mt-12">
+                  <img
+                    src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=2075&q=80"
+                    alt="Luxury property"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Interior Image Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="aspect-[16/9] overflow-hidden">
-              <img
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
-                alt="Modern architecture design"
-                className="w-full h-full object-cover"
-              />
+      {/* ==================== SERVICES SECTION ==================== */}
+      <section id="services" className="scroll-mt-24">
+        {/* Services Intro */}
+        <div className="section-padding bg-white">
+          <div className="container-custom">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">Our Services</span>
+                <p className="text-2xl md:text-3xl leading-relaxed text-[var(--color-text-dark)]" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>
+                  Our services are designed to support every aspect of property ownership—from initial acquisition through ongoing management.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed">
+                  We emphasise clear structure, transparent communication, and predictable outcomes across all services. This ensures they can be integrated smoothly into your investment strategy and maintained with confidence over time.
+                </p>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
+        </div>
+
+        {/* Services Detail */}
+        <div className="bg-[var(--color-bg-light)]">
+          {services.map((service, index) => (
+            <div
+              key={service.id}
+              id={service.id}
+              className={`section-padding scroll-mt-24 ${index % 2 === 1 ? 'bg-white' : ''}`}
+            >
+              <div className="container-custom">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                  <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
+                    <div className="mb-6 text-[var(--color-primary)]">
+                      {service.icon}
+                    </div>
+                    <span className="label-luxury block mb-4">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h2
+                      className="text-3xl md:text-4xl mb-6"
+                      style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                    >
+                      {service.title}
+                    </h2>
+                    <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-8">
+                      {service.description}
+                    </p>
+                    <a
+                      href="#contact"
+                      className="inline-flex items-center text-sm uppercase tracking-wider font-medium hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      Inquire About This Service
+                      <ArrowRight className="ml-2" size={16} />
+                    </a>
+                  </div>
+
+                  <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+                    <div className="bg-white p-10 shadow-lg">
+                      <h3 className="text-lg font-medium mb-6">What&apos;s Included</h3>
+                      <ul className="space-y-4">
+                        {service.features.map((feature, featureIndex) => (
+                          <motion.li
+                            key={feature}
+                            initial={{ opacity: 0, x: 20 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: featureIndex * 0.1 }}
+                            className="flex items-start gap-4"
+                          >
+                            <Check className="text-[var(--color-primary)] mt-0.5 flex-shrink-0" size={18} />
+                            <span className="text-[var(--color-text-muted)]">{feature}</span>
+                          </motion.li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ==================== PROJECTS SECTION ==================== */}
+      <section id="projects" className="scroll-mt-24">
+        {/* Coming Soon */}
+        <div className="section-padding bg-white">
+          <div className="container-custom">
+            <div className="max-w-2xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">Our Portfolio</span>
+                <h2
+                  className="text-3xl md:text-4xl mb-6"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  Our portfolio is being curated
+                </h2>
+                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-10">
+                  We are preparing detailed case studies of our completed and ongoing projects.
+                  Check back soon or contact us to learn more about our work.
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center text-sm uppercase tracking-wider font-medium hover:text-[var(--color-primary)] transition-colors"
+                >
+                  Get in Touch
+                  <ArrowUpRight className="ml-2" size={16} />
+                </a>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="py-20 bg-[var(--color-bg-dark)]">
+          <div className="container-custom">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="text-center"
+                >
+                  <span
+                    className="text-4xl md:text-5xl text-white block mb-2"
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                  >
+                    {stat.num}
+                  </span>
+                  <span className="text-white/60 text-sm uppercase tracking-wider">
+                    {stat.label}
+                  </span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== CONTACT SECTION ==================== */}
+      <section id="contact" className="scroll-mt-24">
+        {/* Intro & Contact Info */}
+        <div className="section-padding bg-white">
+          <div className="container-custom">
+            {/* Intro Text */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">Contact Us</span>
+                <p
+                  className="text-2xl md:text-3xl leading-relaxed text-[var(--color-text-dark)]"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  We&apos;re here to help with development, renovation, rentals, or investment planning.
+                </p>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed">
+                  Whether you&apos;re looking to invest, develop, or need expert property management, our team is ready to discuss your requirements and provide tailored solutions.
+                </p>
+              </motion.div>
+            </div>
+
+            {/* Contact Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {contactInfo.map((info, index) => (
+                <motion.div
+                  key={info.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors duration-500"
+                >
+                  <div className="text-[var(--color-primary)] mb-4">
+                    {info.icon}
+                  </div>
+                  <h3 className="font-medium mb-2">{info.title}</h3>
+                  {info.href ? (
+                    <a
+                      href={info.href}
+                      className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                    >
+                      {info.content}
+                    </a>
+                  ) : (
+                    <div className="text-[var(--color-text-muted)]">
+                      <span>{info.content}</span>
+                      {info.subContent && <span className="block">{info.subContent}</span>}
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Form Section */}
+        <div className="relative py-32 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
+              alt="Modern architecture"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[var(--color-bg-dark)]/90" />
+          </div>
+
+          <div className="container-custom relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="label-luxury block mb-6">Send a Message</span>
+                <h2
+                  className="text-4xl md:text-5xl text-white mb-8 leading-tight"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  Tell us about<br />your project
+                </h2>
+                <p className="text-white/60 text-lg leading-relaxed">
+                  Fill out the form and we will contact you as soon as possible.
+                  We typically respond within one business day.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <ContactForm variant="dark" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Map Section */}
+        <div className="h-[500px] relative">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.8!2d33.0442!3d34.6892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e7340a5e15e0e1%3A0x1!2sPyrgos%2C%20Limassol%2C%20Cyprus!5e0!3m2!1sen!2s!4v1705600000000!5m2!1sen!2s"
+            width="100%"
+            height="100%"
+            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Milenny Property - Elpidas 8, Pyrgos 4534, Limassol, Cyprus"
+          />
         </div>
       </section>
     </>

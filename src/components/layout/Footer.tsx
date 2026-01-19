@@ -1,25 +1,43 @@
+"use client";
+
 import Link from "next/link";
 import Logo from "@/components/ui/Logo";
 import { ArrowUpRight } from "lucide-react";
 
 const services = [
-  { href: "/services#property-development", label: "Property Development" },
-  { href: "/services#project-management", label: "Project Management" },
-  { href: "/services#short-term-rentals", label: "Short-Term Rentals" },
-  { href: "/services#long-term-rentals", label: "Long-Term Rentals" },
-  { href: "/services#investment-advisory", label: "Investment Advisory" },
-  { href: "/services#sales-marketing", label: "Sales & Marketing" },
+  { href: "/#property-development", label: "Property Development" },
+  { href: "/#project-management", label: "Project Management" },
+  { href: "/#short-term-rentals", label: "Short-Term Rentals" },
+  { href: "/#long-term-rentals", label: "Long-Term Rentals" },
+  { href: "/#investment-advisory", label: "Investment Advisory" },
+  { href: "/#sales-marketing", label: "Sales & Marketing" },
 ];
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
+  { href: "/#about", label: "About" },
+  { href: "/#services", label: "Services" },
+  { href: "/#projects", label: "Projects" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export default function Footer() {
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    // Only handle anchor links
+    if (href.startsWith("/#")) {
+      e.preventDefault();
+      const targetId = href.substring(2); // Remove "/#"
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (href === "/") {
+      // For home, scroll to top
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer className="bg-[var(--color-bg-dark)] text-white">
       {/* Main Footer */}
@@ -31,13 +49,14 @@ export default function Footer() {
             <p className="text-[13px] text-white/50 leading-relaxed max-w-[280px] mb-6">
               A boutique real estate firm offering development, renovation, rentals, and investment advisory in Cyprus.
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center text-[11px] uppercase tracking-[0.15em] font-medium text-white/60 hover:text-[var(--color-primary)] transition-colors"
+            <a
+              href="/#contact"
+              onClick={(e) => handleNavClick(e, "/#contact")}
+              className="inline-flex items-center text-[11px] uppercase tracking-[0.15em] font-medium text-white/60 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
             >
               Get In Touch
               <ArrowUpRight className="ml-2" size={12} />
-            </Link>
+            </a>
           </div>
 
           {/* Navigation */}
@@ -48,12 +67,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
+                  <a
                     href={link.href}
-                    className="text-[13px] text-white/60 hover:text-white transition-colors"
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -67,12 +87,13 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((service) => (
                 <li key={service.href}>
-                  <Link
+                  <a
                     href={service.href}
-                    className="text-[13px] text-white/60 hover:text-white transition-colors"
+                    onClick={(e) => handleNavClick(e, service.href)}
+                    className="text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer"
                   >
                     {service.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
