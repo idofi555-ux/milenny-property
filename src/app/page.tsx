@@ -394,42 +394,48 @@ export default function Home() {
       </section>
 
       {/* ==================== PROJECTS SECTION ==================== */}
-      <section id="projects" className="scroll-mt-24">
-        {/* Coming Soon */}
-        <div className="section-padding bg-white">
-          <div className="container-custom">
-            <div className="max-w-2xl mx-auto text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <span className="label-luxury block mb-6">Our Portfolio</span>
-                <h2
-                  className="text-3xl md:text-4xl mb-6"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                >
-                  Our portfolio is being curated
-                </h2>
-                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed mb-10">
-                  We are preparing detailed case studies of our completed and ongoing projects.
-                  Check back soon or contact us to learn more about our work.
-                </p>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center text-sm uppercase tracking-wider font-medium hover:text-[var(--color-primary)] transition-colors"
-                >
-                  Get in Touch
-                  <ArrowUpRight className="ml-2" size={16} />
-                </a>
-              </motion.div>
-            </div>
-          </div>
+      <section id="projects" className="scroll-mt-24 relative py-32 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <img
+            src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+            alt="Modern architecture"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-[#0a0a0a]/90" />
         </div>
 
-        {/* Stats Section */}
-        <div className="py-20 bg-[var(--color-bg-light)]">
-          <div className="container-custom">
+        <div className="container-custom relative z-10">
+          {/* Portfolio Content */}
+          <div className="max-w-2xl mx-auto text-center mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-xs uppercase tracking-[0.2em] text-white/40 block mb-6">Our Portfolio</span>
+              <h2
+                className="text-3xl md:text-4xl lg:text-5xl mb-6 text-white"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+              >
+                Our portfolio is being curated
+              </h2>
+              <p className="text-white/50 text-lg leading-relaxed mb-10">
+                We are preparing detailed case studies of our completed and ongoing projects.
+                Check back soon or contact us to learn more about our work.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center text-sm uppercase tracking-wider font-medium text-white hover:text-white/70 transition-colors"
+              >
+                Get in Touch
+                <ArrowUpRight className="ml-2" size={16} />
+              </a>
+            </motion.div>
+          </div>
+
+          {/* Stats */}
+          <div className="border-t border-white/10 pt-16">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
                 <motion.div
@@ -441,12 +447,12 @@ export default function Home() {
                   className="text-center"
                 >
                   <span
-                    className="text-4xl md:text-5xl text-[var(--color-text-dark)] block mb-2"
+                    className="text-4xl md:text-5xl text-white block mb-2"
                     style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
                   >
                     {stat.num}
                   </span>
-                  <span className="text-[var(--color-text-muted)] text-sm uppercase tracking-wider">
+                  <span className="text-white/50 text-sm uppercase tracking-wider">
                     {stat.label}
                   </span>
                 </motion.div>
