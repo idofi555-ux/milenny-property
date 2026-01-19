@@ -437,21 +437,22 @@ export default function Home() {
       {/* ==================== CONTACT SECTION ==================== */}
       <section id="contact" className="scroll-mt-24 bg-[#0a0a0a] py-24 lg:py-32">
         <div className="container-custom">
+          {/* Header - Centered */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mb-16 lg:mb-20 flex flex-col items-center text-center"
+          >
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 text-white">
+              Get in touch
+            </h2>
+            <p className="text-lg text-white/50 max-w-xl">
+              We&apos;d love to hear from you. Whether you have a question about our services or want to discuss a project.
+            </p>
+          </motion.div>
+
           <div className="max-w-5xl mx-auto">
-            {/* Header */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="mb-16 lg:mb-20 text-center"
-            >
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight mb-6 text-white">
-                Get in touch
-              </h2>
-              <p className="text-lg text-white/50 max-w-xl mx-auto text-center">
-                We&apos;d love to hear from you. Whether you have a question about our services or want to discuss a project.
-              </p>
-            </motion.div>
 
             {/* Two Column Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
