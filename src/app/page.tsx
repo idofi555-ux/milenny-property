@@ -457,72 +457,122 @@ export default function Home() {
       </section>
 
       {/* ==================== CONTACT SECTION ==================== */}
-      <section id="contact" className="scroll-mt-24 bg-white">
-        <div className="container-custom py-20 lg:py-28">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
-            {/* Left Column - Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <span className="label-luxury block mb-4">Contact</span>
-              <h2
-                className="text-3xl md:text-4xl mb-6"
-                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+      <section id="contact" className="scroll-mt-24">
+        {/* Contact Info - Light Background */}
+        <div className="bg-[#F5F3EF] py-16 lg:py-20">
+          <div className="container-custom">
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-10">
+              {/* Left - Heading */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="lg:max-w-md"
               >
-                Let&apos;s discuss your project
-              </h2>
-              <p className="text-[var(--color-text-muted)] mb-10 leading-relaxed">
-                Whether you&apos;re looking to invest, develop, or need expert property management, we&apos;re here to help.
-              </p>
+                <span className="text-xs uppercase tracking-[0.2em] text-[var(--color-text-muted)] block mb-4">Contact Us</span>
+                <h2
+                  className="text-3xl md:text-4xl mb-4"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  Get in touch
+                </h2>
+                <p className="text-[var(--color-text-muted)] leading-relaxed">
+                  We&apos;re here to help with development, renovation, rentals, or investment planning.
+                </p>
+              </motion.div>
 
-              {/* Contact Details */}
-              <div className="space-y-6">
+              {/* Right - Contact Cards */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="flex flex-col sm:flex-row gap-8 lg:gap-12"
+              >
+                {/* Email Card */}
                 <div className="flex items-start gap-4">
-                  <div className="text-[var(--color-primary)] mt-1">
-                    <Mail size={18} />
+                  <div className="w-12 h-12 rounded-lg border border-[var(--color-border)] flex items-center justify-center flex-shrink-0">
+                    <Mail size={20} className="text-[var(--color-text-dark)]" />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Email</p>
-                    <a href="mailto:info@milennyproperty.com" className="text-[var(--color-text-dark)] hover:text-[var(--color-primary)] transition-colors">
+                    <h3 className="font-medium text-[var(--color-text-dark)] mb-1">Email</h3>
+                    <a href="mailto:info@milennyproperty.com" className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors text-sm">
                       info@milennyproperty.com
                     </a>
                   </div>
                 </div>
 
+                {/* Phone Card */}
                 <div className="flex items-start gap-4">
-                  <div className="text-[var(--color-primary)] mt-1">
-                    <MapPin size={18} />
+                  <div className="w-12 h-12 rounded-lg border border-[var(--color-border)] flex items-center justify-center flex-shrink-0">
+                    <Clock size={20} className="text-[var(--color-text-dark)]" />
                   </div>
                   <div>
-                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Office</p>
-                    <p className="text-[var(--color-text-dark)]">Elpidas 8, Pyrgos 4534</p>
-                    <p className="text-[var(--color-text-dark)]">Limassol, Cyprus</p>
+                    <h3 className="font-medium text-[var(--color-text-dark)] mb-1">Hours</h3>
+                    <p className="text-[var(--color-text-muted)] text-sm">Mon–Fri, 09:00–18:00</p>
                   </div>
                 </div>
+              </motion.div>
+            </div>
+          </div>
+        </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="text-[var(--color-primary)] mt-1">
-                    <Clock size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-wider text-[var(--color-text-muted)] mb-1">Hours</p>
-                    <p className="text-[var(--color-text-dark)]">Mon – Fri, 09:00 – 18:00</p>
-                  </div>
-                </div>
+        {/* Form Section - Dark Background */}
+        <div className="relative py-20 lg:py-28 overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
+              alt="Modern architecture"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-[#1a1a1a]/90" />
+          </div>
+
+          <div className="container-custom relative z-10">
+            <div className="max-w-xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <h2
+                  className="text-3xl md:text-4xl text-white mb-4"
+                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                >
+                  Send us a message
+                </h2>
+                <p className="text-white/50 mb-10">
+                  Fill out the form below, and we will contact you as soon as possible.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+              >
+                <ContactForm variant="dark" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+
+        {/* Scrolling Marquee */}
+        <div className="bg-[#F5F3EF] py-8 overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center">
+                <span className="text-3xl md:text-4xl text-[var(--color-text-dark)]/20 mx-8" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Architecture</span>
+                <span className="text-[var(--color-text-dark)]/20 mx-4">•</span>
+                <span className="text-3xl md:text-4xl text-[var(--color-text-dark)]/20 mx-8" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Design</span>
+                <span className="text-[var(--color-text-dark)]/20 mx-4">•</span>
+                <span className="text-3xl md:text-4xl text-[var(--color-text-dark)]/20 mx-8" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Construction</span>
+                <span className="text-[var(--color-text-dark)]/20 mx-4">•</span>
+                <span className="text-3xl md:text-4xl text-[var(--color-text-dark)]/20 mx-8" style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}>Real Estate</span>
+                <span className="text-[var(--color-text-dark)]/20 mx-4">•</span>
               </div>
-            </motion.div>
-
-            {/* Right Column - Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-            >
-              <ContactForm variant="light" />
-            </motion.div>
+            ))}
           </div>
         </div>
       </section>

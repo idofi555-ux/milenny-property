@@ -2,11 +2,13 @@
 
 import Logo from "@/components/ui/Logo";
 
-const navLinks = [
-  { href: "/#about", label: "About" },
-  { href: "/#services", label: "Services" },
-  { href: "/#projects", label: "Projects" },
-  { href: "/#contact", label: "Contact" },
+const services = [
+  { href: "/#property-development", label: "Property Development" },
+  { href: "/#project-management", label: "Project Management" },
+  { href: "/#short-term-rentals", label: "Short-Term Rentals" },
+  { href: "/#long-term-rentals", label: "Long-Term Rentals" },
+  { href: "/#investment-advisory", label: "Investment Advisory" },
+  { href: "/#sales-marketing", label: "Sales & Marketing" },
 ];
 
 export default function Footer() {
@@ -23,50 +25,57 @@ export default function Footer() {
 
   return (
     <footer className="bg-[var(--color-bg-dark)]">
-      <div className="container-custom py-12">
-        {/* Main Footer Content */}
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-          {/* Logo & Tagline */}
-          <div className="flex items-center gap-6">
-            <Logo light className="scale-90 origin-left" />
-            <span className="hidden sm:block w-px h-8 bg-white/10" />
-            <span className="hidden sm:block text-white/40 text-sm">
-              Boutique Property Development
-            </span>
+      <div className="container-custom py-16">
+        {/* Main Footer Content - 3 Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-20">
+          {/* Column 1: Logo & Description */}
+          <div>
+            <Logo light className="mb-6" />
+            <p className="text-white/40 text-sm leading-relaxed max-w-xs">
+              Milenny Property is a boutique real estate firm offering development, renovation, rentals, and investment advisory.
+            </p>
           </div>
 
-          {/* Navigation */}
-          <nav>
-            <ul className="flex flex-wrap items-center gap-8">
-              {navLinks.map((link) => (
-                <li key={link.href}>
+          {/* Column 2: Services */}
+          <div>
+            <h3 className="text-white font-medium mb-6">Services</h3>
+            <ul className="space-y-3">
+              {services.map((service) => (
+                <li key={service.href}>
                   <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-sm text-white/50 hover:text-white transition-colors"
+                    href={service.href}
+                    onClick={(e) => handleNavClick(e, service.href)}
+                    className="text-white/40 text-sm hover:text-white transition-colors"
                   >
-                    {link.label}
+                    {service.label}
                   </a>
                 </li>
               ))}
             </ul>
-          </nav>
+          </div>
+
+          {/* Column 3: Contact */}
+          <div>
+            <h3 className="text-white font-medium mb-6">Contact</h3>
+            <ul className="space-y-3 text-sm">
+              <li className="text-white/40">
+                Phone: <span className="text-white/60">+XXX XXX XXX</span>
+              </li>
+              <li className="text-white/40">
+                Email: <a href="mailto:info@milennyproperty.com" className="text-white/60 hover:text-white transition-colors">info@milennyproperty.com</a>
+              </li>
+              <li className="text-white/40">
+                Hours: <span className="text-white/60">Mon–Fri, 09:00–18:00</span>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t border-white/10 mt-10 pt-8">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 text-xs text-white/30">
-            <p>© {new Date().getFullYear()} Milenny Property. All rights reserved.</p>
-            <div className="flex items-center gap-6">
-              <span>Limassol, Cyprus</span>
-              <a
-                href="mailto:info@milennyproperty.com"
-                className="hover:text-white/60 transition-colors"
-              >
-                info@milennyproperty.com
-              </a>
-            </div>
-          </div>
+        {/* Bottom Bar */}
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <p className="text-white/30 text-sm">
+            Milenny Property © {new Date().getFullYear()}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>
