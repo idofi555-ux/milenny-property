@@ -23,16 +23,14 @@ const navLinks = [
 
 export default function Footer() {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    // Only handle anchor links
     if (href.startsWith("/#")) {
       e.preventDefault();
-      const targetId = href.substring(2); // Remove "/#"
+      const targetId = href.substring(2);
       const element = document.getElementById(targetId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth" });
       }
     } else if (href === "/") {
-      // For home, scroll to top
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -41,36 +39,36 @@ export default function Footer() {
   return (
     <footer className="bg-[var(--color-bg-dark)] text-white">
       {/* Main Footer */}
-      <div className="container-custom py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+      <div className="container-custom py-12 lg:py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 lg:gap-6">
           {/* Company Info */}
-          <div className="lg:col-span-1">
-            <Logo light className="mb-6" />
-            <p className="text-[13px] text-white/50 leading-relaxed max-w-[280px] mb-6">
+          <div className="col-span-2 md:col-span-4 lg:col-span-2">
+            <Logo light className="mb-4 scale-90 origin-left" />
+            <p className="text-[11px] text-white/40 leading-relaxed max-w-[240px] mb-4">
               A boutique real estate firm offering development, renovation, rentals, and investment advisory in Cyprus.
             </p>
             <a
               href="/#contact"
               onClick={(e) => handleNavClick(e, "/#contact")}
-              className="inline-flex items-center text-[11px] uppercase tracking-[0.15em] font-medium text-white/60 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
+              className="inline-flex items-center text-[10px] uppercase tracking-[0.12em] font-medium text-white/50 hover:text-[var(--color-primary)] transition-colors cursor-pointer"
             >
               Get In Touch
-              <ArrowUpRight className="ml-2" size={12} />
+              <ArrowUpRight className="ml-1.5" size={10} />
             </a>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="text-[11px] font-medium mb-5 uppercase tracking-[0.15em] text-white/40">
+            <h3 className="text-[10px] font-medium mb-3 uppercase tracking-[0.12em] text-white/30">
               Navigation
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.href)}
-                    className="text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer"
+                    className="text-[11px] text-white/50 hover:text-white transition-colors cursor-pointer"
                   >
                     {link.label}
                   </a>
@@ -81,16 +79,16 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h3 className="text-[11px] font-medium mb-5 uppercase tracking-[0.15em] text-white/40">
+            <h3 className="text-[10px] font-medium mb-3 uppercase tracking-[0.12em] text-white/30">
               Services
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-2">
               {services.map((service) => (
                 <li key={service.href}>
                   <a
                     href={service.href}
                     onClick={(e) => handleNavClick(e, service.href)}
-                    className="text-[13px] text-white/60 hover:text-white transition-colors cursor-pointer"
+                    className="text-[11px] text-white/50 hover:text-white transition-colors cursor-pointer"
                   >
                     {service.label}
                   </a>
@@ -101,27 +99,27 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-[11px] font-medium mb-5 uppercase tracking-[0.15em] text-white/40">
+            <h3 className="text-[10px] font-medium mb-3 uppercase tracking-[0.12em] text-white/30">
               Contact
             </h3>
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               <li>
-                <span className="text-[11px] text-white/30 uppercase tracking-wider block mb-1">Email</span>
+                <span className="text-[9px] text-white/25 uppercase tracking-wider block mb-0.5">Email</span>
                 <a
                   href="mailto:info@milennyproperty.com"
-                  className="text-[13px] text-white/60 hover:text-white transition-colors"
+                  className="text-[11px] text-white/50 hover:text-white transition-colors"
                 >
                   info@milennyproperty.com
                 </a>
               </li>
               <li>
-                <span className="text-[11px] text-white/30 uppercase tracking-wider block mb-1">Address</span>
-                <span className="text-[13px] text-white/50 block">Elpidas 8, Pyrgos 4534</span>
-                <span className="text-[13px] text-white/50">Limassol, Cyprus</span>
+                <span className="text-[9px] text-white/25 uppercase tracking-wider block mb-0.5">Address</span>
+                <span className="text-[11px] text-white/40 block">Elpidas 8, Pyrgos 4534</span>
+                <span className="text-[11px] text-white/40">Limassol, Cyprus</span>
               </li>
               <li>
-                <span className="text-[11px] text-white/30 uppercase tracking-wider block mb-1">Hours</span>
-                <span className="text-[13px] text-white/50">Mon–Fri, 09:00–18:00</span>
+                <span className="text-[9px] text-white/25 uppercase tracking-wider block mb-0.5">Hours</span>
+                <span className="text-[11px] text-white/40">Mon–Fri, 09:00–18:00</span>
               </li>
             </ul>
           </div>
@@ -129,22 +127,22 @@ export default function Footer() {
       </div>
 
       {/* Bottom Bar */}
-      <div className="border-t border-white/10">
-        <div className="container-custom py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[11px] text-white/30">
+      <div className="border-t border-white/[0.06]">
+        <div className="container-custom py-4">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3">
+            <p className="text-[10px] text-white/25">
               Milenny Property &copy; {new Date().getFullYear()}. All rights reserved.
             </p>
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-5">
               <Link
                 href="/privacy"
-                className="text-[11px] text-white/30 hover:text-white/60 transition-colors"
+                className="text-[10px] text-white/25 hover:text-white/50 transition-colors"
               >
                 Privacy Policy
               </Link>
               <Link
                 href="/terms"
-                className="text-[11px] text-white/30 hover:text-white/60 transition-colors"
+                className="text-[10px] text-white/25 hover:text-white/50 transition-colors"
               >
                 Terms of Service
               </Link>

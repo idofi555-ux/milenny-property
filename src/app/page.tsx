@@ -479,38 +479,30 @@ export default function Home() {
 
       {/* ==================== CONTACT SECTION ==================== */}
       <section id="contact" className="scroll-mt-24">
-        {/* Intro & Contact Info */}
-        <div className="section-padding bg-white">
+        {/* Contact Info Cards */}
+        <div className="py-16 md:py-20 bg-[#F8F7F4]">
           <div className="container-custom">
-            {/* Intro Text */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+            {/* Section Header */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <span className="label-luxury block mb-4">Contact Us</span>
+              <h2
+                className="text-3xl md:text-4xl mb-4"
+                style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
               >
-                <span className="label-luxury block mb-6">Contact Us</span>
-                <p
-                  className="text-2xl md:text-3xl leading-relaxed text-[var(--color-text-dark)]"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
-                >
-                  We&apos;re here to help with development, renovation, rentals, or investment planning.
-                </p>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <p className="text-[var(--color-text-muted)] text-lg leading-relaxed">
-                  Whether you&apos;re looking to invest, develop, or need expert property management, our team is ready to discuss your requirements and provide tailored solutions.
-                </p>
-              </motion.div>
-            </div>
+                Get in touch
+              </h2>
+              <p className="text-[var(--color-text-muted)] text-base max-w-xl mx-auto">
+                Whether you&apos;re looking to invest, develop, or need expert property management, our team is ready to help.
+              </p>
+            </motion.div>
 
             {/* Contact Info Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-4xl mx-auto">
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={info.title}
@@ -518,21 +510,23 @@ export default function Home() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="p-8 border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors duration-500"
+                  className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-[#E8E4DC]"
                 >
-                  <div className="text-[var(--color-primary)] mb-4">
-                    {info.icon}
+                  <div className="w-10 h-10 rounded-full bg-[var(--color-primary)]/10 flex items-center justify-center mb-4">
+                    <div className="text-[var(--color-primary)]">
+                      {info.icon}
+                    </div>
                   </div>
-                  <h3 className="font-medium mb-2">{info.title}</h3>
+                  <h3 className="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-dark)] mb-2">{info.title}</h3>
                   {info.href ? (
                     <a
                       href={info.href}
-                      className="text-[var(--color-text-muted)] hover:text-[var(--color-primary)] transition-colors"
+                      className="text-[var(--color-text-muted)] text-[15px] hover:text-[var(--color-primary)] transition-colors"
                     >
                       {info.content}
                     </a>
                   ) : (
-                    <div className="text-[var(--color-text-muted)]">
+                    <div className="text-[var(--color-text-muted)] text-[15px]">
                       <span>{info.content}</span>
                       {info.subContent && <span className="block">{info.subContent}</span>}
                     </div>
@@ -544,55 +538,59 @@ export default function Home() {
         </div>
 
         {/* Form Section */}
-        <div className="relative py-32 overflow-hidden">
+        <div className="relative py-16 md:py-20 overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2053&q=80"
               alt="Modern architecture"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-[var(--color-bg-dark)]/90" />
+            <div className="absolute inset-0 bg-[var(--color-bg-dark)]/92" />
           </div>
 
           <div className="container-custom relative z-10">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
-                <span className="label-luxury block mb-6">Send a Message</span>
-                <h2
-                  className="text-4xl md:text-5xl text-white mb-8 leading-tight"
-                  style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+            <div className="max-w-4xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="lg:col-span-2"
                 >
-                  Tell us about<br />your project
-                </h2>
-                <p className="text-white/60 text-lg leading-relaxed">
-                  Fill out the form and we will contact you as soon as possible.
-                  We typically respond within one business day.
-                </p>
-              </motion.div>
+                  <span className="label-luxury block mb-4">Send a Message</span>
+                  <h2
+                    className="text-2xl md:text-3xl text-white mb-4 leading-tight"
+                    style={{ fontFamily: 'var(--font-playfair), Georgia, serif' }}
+                  >
+                    Tell us about your project
+                  </h2>
+                  <p className="text-white/50 text-[15px] leading-relaxed">
+                    Fill out the form and we&apos;ll get back to you within one business day.
+                  </p>
+                </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <ContactForm variant="dark" />
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.1 }}
+                  className="lg:col-span-3"
+                >
+                  <ContactForm variant="dark" compact />
+                </motion.div>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Map Section */}
-        <div className="h-[500px] relative">
+        <div className="h-[350px] relative bg-[var(--color-bg-dark)]">
+          <div className="absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-[var(--color-bg-dark)] to-transparent z-10" />
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.8!2d33.0442!3d34.6892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14e7340a5e15e0e1%3A0x1!2sPyrgos%2C%20Limassol%2C%20Cyprus!5e0!3m2!1sen!2s!4v1705600000000!5m2!1sen!2s"
             width="100%"
             height="100%"
-            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1)' }}
+            style={{ border: 0, filter: 'grayscale(100%) contrast(1.1) brightness(0.85)' }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

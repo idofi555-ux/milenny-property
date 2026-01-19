@@ -38,22 +38,24 @@ export default function ContactForm({ variant = "dark", compact = false }: Conta
 
   const isDark = variant === "dark";
 
-  const inputBaseStyles = "w-full bg-white px-5 py-4 text-[15px] text-[#2C3639] placeholder:text-[#2C3639]/40 focus:outline-none transition-all duration-300";
+  const inputBaseStyles = compact
+    ? "w-full bg-white px-4 py-3 text-[14px] text-[#2C3639] placeholder:text-[#2C3639]/40 focus:outline-none transition-all duration-300"
+    : "w-full bg-white px-5 py-4 text-[15px] text-[#2C3639] placeholder:text-[#2C3639]/40 focus:outline-none transition-all duration-300";
 
   const inputStyles = isDark
     ? `${inputBaseStyles} border-0 focus:ring-2 focus:ring-[var(--color-primary)]/20`
     : `${inputBaseStyles} border border-[#DCD7C9] focus:border-[var(--color-primary)]`;
 
   const labelStyles = isDark
-    ? "text-white/80 text-[13px] font-medium mb-2 block"
-    : "text-[#2C3639] text-[13px] font-medium mb-2 block";
+    ? `text-white/70 ${compact ? 'text-[12px]' : 'text-[13px]'} font-medium ${compact ? 'mb-1.5' : 'mb-2'} block`
+    : `text-[#2C3639] ${compact ? 'text-[12px]' : 'text-[13px]'} font-medium ${compact ? 'mb-1.5' : 'mb-2'} block`;
 
   const errorStyles = "text-red-400 text-[12px] mt-1 block";
 
   if (compact) {
     return (
-      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
             <label className={labelStyles}>Name *</label>
             <input
@@ -85,7 +87,7 @@ export default function ContactForm({ variant = "dark", compact = false }: Conta
           <label className={labelStyles}>Message *</label>
           <textarea
             placeholder="How can we help you?"
-            rows={4}
+            rows={3}
             className={`${inputStyles} resize-none`}
             {...register("message", { required: "Message is required" })}
           />
@@ -94,10 +96,10 @@ export default function ContactForm({ variant = "dark", compact = false }: Conta
         <button
           type="submit"
           disabled={isSubmitting}
-          className={`w-full py-4 px-8 text-[13px] font-medium uppercase tracking-[0.15em] transition-all duration-300 ${
+          className={`w-full py-3 px-6 text-[12px] font-medium uppercase tracking-[0.12em] transition-all duration-300 ${
             isDark
-              ? "bg-transparent border-2 border-white/30 text-white hover:bg-white hover:text-[#2C3639]"
-              : "bg-transparent border-2 border-[#2C3639] text-[#2C3639] hover:bg-[#2C3639] hover:text-white"
+              ? "bg-white/10 border border-white/20 text-white hover:bg-white hover:text-[#2C3639]"
+              : "bg-transparent border border-[#2C3639] text-[#2C3639] hover:bg-[#2C3639] hover:text-white"
           } disabled:opacity-50`}
         >
           {isSubmitting ? "Sending..." : isSubmitted ? "Message Sent!" : "Send Message"}
