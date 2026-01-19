@@ -2,13 +2,13 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 interface FormData {
   name: string;
   email: string;
   phone?: string;
   message: string;
-  consent?: boolean;
 }
 
 interface ContactFormProps {
@@ -38,29 +38,37 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
 
   const isDark = variant === "dark";
 
-  const inputStyles = `w-full px-0 py-3 text-[15px] bg-transparent border-b transition-colors focus:outline-none ${
-    isDark
-      ? 'border-white/20 text-white placeholder:text-white/40 focus:border-white/50'
-      : 'border-[var(--color-border)] text-[var(--color-text-dark)] placeholder:text-[var(--color-text-muted)] focus:border-[var(--color-primary)]'
-  }`;
-
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
       <div>
+        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+          Name
+        </label>
         <input
           type="text"
-          placeholder="Your Name"
-          className={inputStyles}
+          placeholder="Your name"
+          className={`w-full py-3 bg-transparent border-b text-lg transition-colors focus:outline-none ${
+            isDark
+              ? 'border-white/20 text-white placeholder:text-white/30 focus:border-white'
+              : 'border-gray-200 text-gray-900 placeholder:text-gray-300 focus:border-gray-900'
+          }`}
           {...register("name", { required: "Name is required" })}
         />
-        {errors.name && <span className="text-red-500 text-xs mt-1 block">{errors.name.message}</span>}
+        {errors.name && <span className="text-red-500 text-xs mt-2 block">{errors.name.message}</span>}
       </div>
 
       <div>
+        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+          Email
+        </label>
         <input
           type="email"
-          placeholder="Contact Email"
-          className={inputStyles}
+          placeholder="your@email.com"
+          className={`w-full py-3 bg-transparent border-b text-lg transition-colors focus:outline-none ${
+            isDark
+              ? 'border-white/20 text-white placeholder:text-white/30 focus:border-white'
+              : 'border-gray-200 text-gray-900 placeholder:text-gray-300 focus:border-gray-900'
+          }`}
           {...register("email", {
             required: "Email is required",
             pattern: {
@@ -69,48 +77,53 @@ export default function ContactForm({ variant = "light" }: ContactFormProps) {
             },
           })}
         />
-        {errors.email && <span className="text-red-500 text-xs mt-1 block">{errors.email.message}</span>}
+        {errors.email && <span className="text-red-500 text-xs mt-2 block">{errors.email.message}</span>}
       </div>
 
       <div>
+        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+          Phone <span className="normal-case tracking-normal">(optional)</span>
+        </label>
         <input
           type="tel"
-          placeholder="Phone"
-          className={inputStyles}
+          placeholder="+357 XX XXX XXX"
+          className={`w-full py-3 bg-transparent border-b text-lg transition-colors focus:outline-none ${
+            isDark
+              ? 'border-white/20 text-white placeholder:text-white/30 focus:border-white'
+              : 'border-gray-200 text-gray-900 placeholder:text-gray-300 focus:border-gray-900'
+          }`}
           {...register("phone")}
         />
       </div>
 
       <div>
+        <label className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-3 block">
+          Message
+        </label>
         <textarea
-          placeholder="Message"
-          rows={3}
-          className={`${inputStyles} resize-none`}
+          placeholder="Tell us about your project..."
+          rows={4}
+          className={`w-full py-3 bg-transparent border-b text-lg transition-colors focus:outline-none resize-none ${
+            isDark
+              ? 'border-white/20 text-white placeholder:text-white/30 focus:border-white'
+              : 'border-gray-200 text-gray-900 placeholder:text-gray-300 focus:border-gray-900'
+          }`}
           {...register("message", { required: "Message is required" })}
         />
-        {errors.message && <span className="text-red-500 text-xs mt-1 block">{errors.message.message}</span>}
+        {errors.message && <span className="text-red-500 text-xs mt-2 block">{errors.message.message}</span>}
       </div>
-
-      {isDark && (
-        <div className="flex items-start gap-3 pt-2">
-          <input
-            type="checkbox"
-            id="consent"
-            className="mt-1 w-4 h-4 rounded border-white/20 bg-transparent"
-            {...register("consent")}
-          />
-          <label htmlFor="consent" className="text-white/50 text-sm">
-            I agree that my submitted data is being collected and stored.
-          </label>
-        </div>
-      )}
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full py-4 bg-[#C45C3E] text-white text-sm font-medium tracking-wide hover:bg-[#A84D33] transition-colors disabled:opacity-50"
+        className={`group inline-flex items-center gap-3 text-sm uppercase tracking-[0.15em] font-medium transition-colors disabled:opacity-50 ${
+          isDark
+            ? 'text-white hover:text-white/70'
+            : 'text-gray-900 hover:text-gray-500'
+        }`}
       >
-        {isSubmitting ? "Sending..." : isSubmitted ? "Message Sent!" : "Send message"}
+        {isSubmitting ? "Sending..." : isSubmitted ? "Message Sent" : "Send Message"}
+        <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
       </button>
     </form>
   );
